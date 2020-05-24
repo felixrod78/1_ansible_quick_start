@@ -14,7 +14,7 @@
      -  name: add web content
         lineinfile:
           path: /var/www/html/index.html
-          line: 'felix curso 2'
+          line: "{{ ansible_hostname }}"
      -  name : permisos index    
         file:
           path: /var/www/html/index.html
