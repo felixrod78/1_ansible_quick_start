@@ -1,0 +1,18 @@
+---
+-  hosts:  web
+   become: yes
+   gather_facts: yes
+   tasks:
+   -  debug:
+   -  name: install apache
+      yum:
+        name: httpd
+        state: latest
+      notify: 
+        -  restart httpd
+   handlers:
+   -  name : attempt start httpd    
+      service:
+        name: httpd
+        state: restarted
+      listen: "restart httpd"
